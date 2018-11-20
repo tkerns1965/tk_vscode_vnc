@@ -19,8 +19,8 @@ RUN apt update && \
         x11vnc \
         xvfb
 
-# RUN apt install -y \
-#         gedit
+RUN apt install -y --no-install-recommends \
+        gedit
 
 # RUN apt install -y \
 #         net-tools \
