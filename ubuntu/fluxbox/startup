@@ -1,2 +1,2 @@
 code &
-exec /usr/bin/fluxbox -log "/docker/.fluxbox/log"
+exec /usr/bin/fluxbox -log "${HOME}/.fluxbox/log"
