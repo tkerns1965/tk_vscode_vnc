@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    ubuntu:
+        build:
+            context: ubuntu
+            args:
+                - UBUNTU_VERSION=18.04
+        image: ubuntu1804/vscode_vnc
+        container_name: ubuntu1804-vscode_vnc
+        environment:
+            - VNC_PASSWORD=${VNC_PASSWORD}
+        ports:
+            - "5901:5901"
+            - "6901:6901"
