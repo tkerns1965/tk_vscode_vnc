@@ -5,8 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm \
     DISPLAY=:1 \
     VNC_PORT=5901 \
-    NO_VNC_PORT=6901 \
-    HOME=/docker
+    NO_VNC_PORT=6901
 
 EXPOSE $VNC_PORT \
        $NO_VNC_PORT
