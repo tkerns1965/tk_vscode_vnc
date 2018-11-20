@@ -34,8 +34,12 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
         code \
         libasound2
 
-# RUN apt install -y --no-install-recommends \
-#         gedit
+RUN groupadd --gid 999 appuser && \
+    useradd --gid 999 --uid 999 --create-home --shell /bin/bash appuser
+
+USER appuser
+
+WORKDIR /home/appuser
 
 # RUN apt install -y \
 #         net-tools \
