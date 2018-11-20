@@ -55,6 +55,8 @@ RUN groupadd --gid 999 appuser && \
 
 USER appuser
 
+ENV HOME=/home/appuser
+
 WORKDIR /home/appuser
 
 CMD '/bootstrap.sh'
