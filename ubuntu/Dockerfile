@@ -48,7 +48,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 COPY fluxbox/* /docker/.fluxbox/
 COPY bootstrap.sh /
 
-RUN chmod u+x /bootstrap.sh
+RUN chmod a+x /bootstrap.sh
 
 RUN groupadd --gid 999 appuser && \
     useradd --gid 999 --uid 999 --create-home --shell /bin/bash appuser
