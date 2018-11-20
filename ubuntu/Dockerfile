@@ -45,7 +45,6 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 #     chmod +x -v $HOME/noVNC/utils/*.sh && \
 #     ln -s $HOME/noVNC/vnc_auto.html $HOME/noVNC/index.html
 
-COPY fluxbox/* /docker/.fluxbox/
 COPY bootstrap.sh /
 
 RUN chmod a+x /bootstrap.sh
@@ -58,5 +57,7 @@ USER appuser
 ENV HOME=/home/appuser
 
 WORKDIR /home/appuser
+
+COPY fluxbox/* ${HOME}/.fluxbox/
 
 CMD '/bootstrap.sh'
