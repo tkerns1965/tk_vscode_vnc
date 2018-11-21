@@ -31,6 +31,13 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
         code \
         libasound2
 
+RUN set -eux; \
+	DEBIAN_FRONTEND=noninteractive \
+    apt install -yq --no-install-recommends \
+        gosu; \
+	rm -rf /var/lib/apt/lists/*; \
+	gosu nobody true
+
 # RUN apt install -y \
 #         net-tools \
 #         python \
