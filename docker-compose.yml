@@ -11,5 +11,5 @@ services:
         environment:
             - VNC_PASSWORD=${VNC_PASSWORD}
         ports:
-            - "5901:5901"
-            - "6901:6901"
+            - "VNC_PORT:VNC_PORT"
+            - "NOVNC_PORT:NOVNC_PORT"
