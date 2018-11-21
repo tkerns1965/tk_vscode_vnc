@@ -54,7 +54,7 @@ ARG APP_USER
 RUN groupadd --gid 999 ${APP_USER} && \
     useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${APP_USER}
 
-USER ${APP_USER}
+# USER ${APP_USER}
 
 ENV DISPLAY=:1 \
     HOME_DIR=/home/${APP_USER}
