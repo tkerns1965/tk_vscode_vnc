@@ -6,7 +6,7 @@ services:
             context: ubuntu
             args:
                 - APP_USER=appuser
-                - APP_UID=999
+                # - APP_UID=999
                 - UBUNTU_VERSION=18.04
         image: ubuntu1804/vscode_vnc
         container_name: ubuntu1804-vscode_vnc
