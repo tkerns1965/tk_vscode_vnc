@@ -39,10 +39,12 @@ RUN apt update && \
 #     ln -s $HOME_DIR/noVNC/vnc_auto.html $HOME/noVNC/index.html
 
 ARG APP_USER
-ARG APP_UID
+# ARG APP_UID
 
-RUN groupadd --gid ${APP_UID} ${APP_USER} && \
-    useradd --gid ${APP_UID} --uid ${APP_UID} --create-home --shell /bin/bash ${APP_USER}
+RUN groupadd --gid 999 ${APP_USER} && \
+    useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${APP_USER}
+# RUN groupadd --gid ${APP_UID} ${APP_USER} && \
+#     useradd --gid ${APP_UID} --uid ${APP_UID} --create-home --shell /bin/bash ${APP_USER}
 
 ENV APP_USER=${APP_USER} \
     DISPLAY=:1 \
@@ -50,8 +52,8 @@ ENV APP_USER=${APP_USER} \
 
 WORKDIR ${HOME_DIR}
 
-COPY --chown=${APP_UID}:${APP_UID} fluxbox/* .fluxbox/
-COPY --chown=${APP_UID}:${APP_UID} bootstrap.sh .
+COPY --chown=999:999 fluxbox/* .fluxbox/
+COPY --chown=999:999 bootstrap.sh .
 
 RUN chmod u+x bootstrap.sh
 
