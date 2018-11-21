@@ -4,11 +4,14 @@ FROM ubuntu:${UBUNTU_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm \
     DISPLAY=:1 \
-    VNC_PORT=${VNC_PORT} \
-    NO_VNC_PORT=${NOVNC_PORT}
+    USERNAME=appuser
+    # VNC_PORT=${VNC_PORT}
+    # NO_VNC_PORT=${NOVNC_PORT}
 
-EXPOSE $VNC_PORT \
-       $NO_VNC_PORT
+ENV HOME=/home/${USERNAME}
+
+# EXPOSE $VNC_PORT \
+#        $NO_VNC_PORT
 
 RUN apt update && \
     apt clean && \
@@ -27,7 +30,8 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
     install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ && \
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > \
         /etc/apt/sources.list.d/vscode.list' && \
-    apt install -y --no-install-recommends apt-transport-https && \
+    apt install -y --no-install-recommends \
+        apt-transport-https && \
     apt update && \
     apt install -y --no-install-recommends \
         code \
@@ -48,15 +52,13 @@ COPY bootstrap.sh /
 
 RUN chmod a+x /bootstrap.sh
 
-RUN groupadd --gid 999 appuser && \
-    useradd --gid 999 --uid 999 --create-home --shell /bin/bash appuser
+RUN groupadd --gid 999 ${USERNAME} && \
+    useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${USERNAME}
 
-USER appuser
+USER ${USERNAME}
 
-ENV HOME=/home/appuser
+WORKDIR ${HOME}
 
-WORKDIR /home/appuser
-
-COPY fluxbox/* ${HOME}/.fluxbox/
+COPY fluxbox/* .fluxbox/
 
 CMD '/bootstrap.sh'
