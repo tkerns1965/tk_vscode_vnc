@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p "$HOME_DIR/.vnc"
 x11vnc -storepasswd "2hard4u" "$HOME_DIR/.vnc/passwd"
-Xvfb $DISPLAY -screen 0 1280x720x24 &
+gosu 0 Xvfb $DISPLAY -screen 0 1280x720x24 &
 sleep 5
 startfluxbox &
 sleep 5
