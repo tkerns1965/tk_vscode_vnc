@@ -4,6 +4,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -yq --no-install-recommends \
+        eterm \
         fluxbox \
         wmctrl \
         x11vnc \
