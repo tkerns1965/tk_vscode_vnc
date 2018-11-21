@@ -56,7 +56,8 @@ RUN groupadd --gid 999 ${APP_USER} && \
 
 # USER ${APP_USER}
 
-ENV DISPLAY=:1 \
+ENV APP_USER=${APP_USER} \
+    DISPLAY=:1 \
     HOME_DIR=/home/${APP_USER}
 
 WORKDIR ${HOME_DIR}
