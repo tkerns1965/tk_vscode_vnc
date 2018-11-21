@@ -40,7 +40,7 @@ session.screen0.tooltipDelay:   500
 session.screen0.opaqueMove:     true
 session.screen0.strftimeFormat: %d %b, %a %02k:%M:%S
 session.screen0.allowRemoteActions:     false
-session.screen0.windowMenu:     ${HOME}/.fluxbox/windowmenu
+session.screen0.windowMenu:     $HOME_DIR/.fluxbox/windowmenu
 session.screen0.maxDisableResize:       false
 session.screen0.clickRaises:    true
 session.screen0.windowPlacement:        RowMinOverlapPlacement
@@ -58,18 +58,18 @@ session.screen0.showwindowposition:     false
 session.screen0.maxIgnoreIncrement:     true
 session.screen0.workspaces:     4
 session.tabsAttachArea: Window
-session.slitlistFile:   ${HOME}/.fluxbox/slitlist
+session.slitlistFile:   $HOME_DIR/.fluxbox/slitlist
 session.forcePseudoTransparency:        false
-session.styleOverlay:   ${HOME}/.fluxbox/overlay
-session.keyFile:        ${HOME}/.fluxbox/keys
+session.styleOverlay:   $HOME_DIR/.fluxbox/overlay
+session.keyFile:        $HOME_DIR/.fluxbox/keys
 session.cacheMax:       200
 session.styleFile:      /usr/share/fluxbox/styles/ubuntu-light
 session.colorsPerChannel:       4
 session.tabPadding:     0
 session.autoRaiseDelay: 250
 session.cacheLife:      5
-session.appsFile:       ${HOME}/.fluxbox/apps
+session.appsFile:       $HOME_DIR/.fluxbox/apps
 session.ignoreBorder:   false
 session.configVersion:  13
 session.doubleClickInterval:    250
-session.menuFile:       ${HOME}/.fluxbox/menu
+session.menuFile:       $HOME_DIR/.fluxbox/menu
