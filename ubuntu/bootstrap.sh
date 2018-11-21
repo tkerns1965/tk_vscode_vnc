@@ -8,4 +8,5 @@ gosu $APP_USER sleep 5
 gosu $APP_USER x11vnc -display $DISPLAY -rfbport 5901 -usepw -forever -q &
 # sleep 5
 # /docker/noVNC/utils/launch.sh --vnc localhost:$VNC_PORT --listen $NO_VNC_PORT &
-gosu $APP_USER wait $!
+# gosu $APP_USER wait $!
+wait $!
