@@ -7,6 +7,7 @@ RUN apt update && \
         fluxbox \
         wmctrl \
         x11vnc \
+        x11-utils \
         xvfb && \
     apt clean
 
