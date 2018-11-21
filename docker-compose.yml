@@ -10,6 +10,8 @@ services:
         container_name: ubuntu1804-vscode_vnc
         environment:
             - VNC_PASSWORD=${VNC_PASSWORD}
+            - VNC_PORT=${VNC_PORT}
+            - NOVNC_PORT=${NOVNC_PORT}
         ports:
-            - "VNC_PORT:VNC_PORT"
-            - "NOVNC_PORT:NOVNC_PORT"
+            - "${VNC_PORT}:${VNC_PORT}"
+            - "${NOVNC_PORT}:${NOVNC_PORT}"
