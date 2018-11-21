@@ -52,9 +52,9 @@ ENV DISPLAY=:1 \
 
 WORKDIR ${HOME_DIR}
 
-COPY fluxbox/* .fluxbox/
-COPY bootstrap.sh .
+COPY --chown=999:999 fluxbox/* .fluxbox/
+COPY --chown=999:999 bootstrap.sh .
 
-# RUN chmod u+x bootstrap.sh
+RUN chmod u+x bootstrap.sh
 
 CMD "bootstrap.sh"
