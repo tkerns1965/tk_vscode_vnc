@@ -41,8 +41,8 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 #     chmod +x -v $HOME/noVNC/utils/*.sh && \
 #     ln -s $HOME/noVNC/vnc_auto.html $HOME/noVNC/index.html
 
-RUN groupadd --gid 999 ${USERNAME} && \
-    useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${USERNAME}
+RUN groupadd --gid 999 $(USERNAME) && \
+    useradd --gid 999 --uid 999 --create-home --shell /bin/bash $(USERNAME)
 
 USER ${USERNAME}
 
