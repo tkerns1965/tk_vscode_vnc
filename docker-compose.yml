@@ -10,7 +10,7 @@ services:
         image: ubuntu1804/vscode_vnc
         container_name: ubuntu1804-vscode_vnc
         environment:
-            - USERNAME=appuser
+            - APP_USER=appuser
             - VNC_PASSWORD=${VNC_PASSWORD}
             # - VNC_PORT=${VNC_PORT}
             # - NOVNC_PORT=${NOVNC_PORT}
