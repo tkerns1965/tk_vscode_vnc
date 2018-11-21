@@ -57,4 +57,4 @@ COPY --chown=999:999 bootstrap.sh .
 
 RUN chmod u+x bootstrap.sh
 
-CMD "bootstrap.sh"
+CMD "${HOME_DIR}/bootstrap.sh"
