@@ -4,39 +4,28 @@ FROM ubuntu:${UBUNTU_VERSION}
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -yq --no-install-recommends \
+        apt-transport-https \
+        curl \
+        ca-certificates \
         eterm \
         fluxbox \
+        gnupg \
+        gosu \
         wmctrl \
         x11vnc \
         x11-utils \
         xvfb && \
-    apt clean
-
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt install -yq --no-install-recommends \
-        curl \
-        ca-certificates \
-        gnupg
-
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
-    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+    rm -rf /var/lib/apt/lists/* && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /root/microsoft.gpg && \
+    install -o root -g root -m 644 /root/microsoft.gpg /etc/apt/trusted.gpg.d/ && \
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > \
         /etc/apt/sources.list.d/vscode.list' && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt install -yq --no-install-recommends \
-        apt-transport-https && \
     apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -yq --no-install-recommends \
         code \
-        libasound2
-
-RUN set -eux; \
-	DEBIAN_FRONTEND=noninteractive \
-    apt install -yq --no-install-recommends \
-        gosu; \
-	rm -rf /var/lib/apt/lists/*; \
-	gosu nobody true
+        libasound2 && \
+    rm -rf /var/lib/apt/lists/*
 
 # RUN apt install -y \
 #         net-tools \
@@ -53,8 +42,6 @@ ARG APP_USER
 
 RUN groupadd --gid 999 ${APP_USER} && \
     useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${APP_USER}
-
-# USER ${APP_USER}
 
 ENV APP_USER=${APP_USER} \
     DISPLAY=:1 \
