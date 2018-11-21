@@ -4,8 +4,8 @@ FROM ubuntu:${UBUNTU_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm \
     DISPLAY=:1 \
-    VNC_PORT=5901 \
-    NO_VNC_PORT=6901
+    VNC_PORT=${VNC_PORT} \
+    NO_VNC_PORT=${NOVNC_PORT}
 
 EXPOSE $VNC_PORT \
        $NO_VNC_PORT
