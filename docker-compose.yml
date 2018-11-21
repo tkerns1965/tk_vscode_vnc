@@ -6,11 +6,12 @@ services:
             context: ubuntu
             args:
                 - UBUNTU_VERSION=18.04
+                - USERNAME=appuser
         image: ubuntu1804/vscode_vnc
         container_name: ubuntu1804-vscode_vnc
         environment:
-            - USERNAME=appuser
             - VNC_PASSWORD=${VNC_PASSWORD}
+            # - USERNAME=appuser
             # - VNC_PORT=${VNC_PORT}
             # - NOVNC_PORT=${NOVNC_PORT}
         ports:
