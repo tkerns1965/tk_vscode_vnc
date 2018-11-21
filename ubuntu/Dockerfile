@@ -55,6 +55,6 @@ WORKDIR ${HOME_DIR}
 COPY fluxbox/* .fluxbox/
 COPY bootstrap.sh .
 
-RUN chmod u+x bootstrap.sh
+# RUN chmod u+x bootstrap.sh
 
 CMD "bootstrap.sh"
