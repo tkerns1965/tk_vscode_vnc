@@ -4,14 +4,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive \
     TERM=xterm \
     DISPLAY=:1 \
-    USERNAME=appuser
-    # VNC_PORT=${VNC_PORT}
-    # NO_VNC_PORT=${NOVNC_PORT}
-
-ENV HOME=/home/${USERNAME}
-
-# EXPOSE $VNC_PORT \
-#        $NO_VNC_PORT
+    HOME=/home/${USERNAME}
 
 RUN apt update && \
     apt clean && \
