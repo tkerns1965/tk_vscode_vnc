@@ -1,20 +1,17 @@
 ARG UBUNTU_VERSION
 FROM ubuntu:${UBUNTU_VERSION}
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    TERM=xterm \
-    DISPLAY=:1 \
-    HOME_DIR=/home/${USERNAME}
-
 RUN apt update && \
-    apt clean && \
-    apt install -y --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive \
+    apt install -yq --no-install-recommends \
         fluxbox \
         wmctrl \
         x11vnc \
-        xvfb
+        xvfb && \
+    apt clean
 
-RUN apt install -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt install -yq --no-install-recommends \
         curl \
         ca-certificates \
         gnupg
@@ -23,10 +20,12 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
     install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ && \
     sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > \
         /etc/apt/sources.list.d/vscode.list' && \
-    apt install -y --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive \
+    apt install -yq --no-install-recommends \
         apt-transport-https && \
     apt update && \
-    apt install -y --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive \
+    apt install -yq --no-install-recommends \
         code \
         libasound2
 
@@ -43,12 +42,13 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 
 ARG APP_USER
 
-RUN echo ${APP_USER}
-
 RUN groupadd --gid 999 ${APP_USER} && \
     useradd --gid 999 --uid 999 --create-home --shell /bin/bash ${APP_USER}
 
-USER ${USERNAME}
+USER ${APP_USER}
+
+ENV DISPLAY=:1 \
+    HOME_DIR=/home/${APP_USER}
 
 WORKDIR ${HOME_DIR}
 
