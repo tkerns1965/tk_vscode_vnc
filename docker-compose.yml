@@ -9,9 +9,12 @@ services:
         image: ubuntu1804/vscode_vnc
         container_name: ubuntu1804-vscode_vnc
         environment:
+            - USERNAME=appuser
             - VNC_PASSWORD=${VNC_PASSWORD}
-            - VNC_PORT=${VNC_PORT}
-            - NOVNC_PORT=${NOVNC_PORT}
+            # - VNC_PORT=${VNC_PORT}
+            # - NOVNC_PORT=${NOVNC_PORT}
         ports:
-            - "${VNC_PORT}:${VNC_PORT}"
-            - "${NOVNC_PORT}:${NOVNC_PORT}"
+            - "5901:5901"
+            - "6901:6901"
+            # - "${VNC_PORT}:${VNC_PORT}"
+            # - "${NOVNC_PORT}:${NOVNC_PORT}"
