@@ -1,6 +1,6 @@
 #!/bin/bash
-mkdir -p "$HOME/.vnc"
-x11vnc -storepasswd "2hard4u" "$HOME/.vnc/passwd"
+mkdir -p "$HOME_DIR/.vnc"
+x11vnc -storepasswd "2hard4u" "$HOME_DIR/.vnc/passwd"
 Xvfb $DISPLAY -screen 0 1366x768x24 &
 sleep 5
 startfluxbox &
